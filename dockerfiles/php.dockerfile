@@ -17,12 +17,8 @@ RUN apk add --no-cache --virtual build-essentials \
     docker-php-ext-install bcmath && \
     docker-php-ext-install opcache && \
     docker-php-ext-install exif && \
-    docker-php-ext-configure dom && \
-    docker-php-ext-configure mbstring && \
     docker-php-ext-install zip && \
     apk del build-essentials && rm -rf /usr/src/php*
-
-
 
 RUN apk add --no-cache pcre-dev $PHPIZE_DEPS \
         && pecl install redis \
@@ -33,3 +29,5 @@ RUN addgroup -g 1000 laravel && adduser -G laravel -g laravel -s /bin/sh -D lara
 RUN chown -R laravel /var/www/html
 
 USER laravel
+
+EXPOSE 8081
