@@ -13,8 +13,6 @@ use App\Http\Controllers\SiteController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/get-api', [SiteController::class, 'getApiController']);
-
 Route::middleware('auth:api',  'scope:view-user')->get('/user', function (Request $request) {
     return $request->user();
 });

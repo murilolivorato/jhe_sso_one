@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header text-center"><h3>Acesso a Área Adminstrativa</h3></div>
 
-                <div class="card-body">
+                <div class="card-body mb-3">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -51,9 +51,9 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
+                        <div class="row mb-3">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-light">
                                     {{ __('Login') }}
                                 </button>
 
