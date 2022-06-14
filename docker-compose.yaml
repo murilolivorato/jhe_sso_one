@@ -1,7 +1,8 @@
 version: "3.9"
 networks:
   jhe_sso_one:
-    name: jhe_sso_one
+  sso_two_jhe_sso_one:
+    external: true
 services:
   server:
     # image: 'nginx:stable-alpine'
@@ -9,7 +10,8 @@ services:
       context: .
       dockerfile: dockerfiles/nginx.dockerfile
     ports:
-      - '8081:80'
+      - 8081:80
+      - 7010:7010
     volumes:
       - ./src:/var/www/html
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
@@ -20,6 +22,7 @@ services:
     container_name: jhe_sso_one_server
     networks:
       - jhe_sso_one
+      - sso_two_jhe_sso_one
   mysql:
     image: mysql:8.0.1
     restart: unless-stopped
@@ -42,6 +45,7 @@ services:
       - ./src:/var/www/html:delegated
     networks:
       - jhe_sso_one
+      - sso_two_jhe_sso_one
   redis:
     image: redis:alpine
     restart: unless-stopped

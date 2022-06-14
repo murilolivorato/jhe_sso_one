@@ -30,4 +30,4 @@ RUN chown -R laravel /var/www/html
 
 USER laravel
 
-EXPOSE 8081
+
