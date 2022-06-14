@@ -15,6 +15,6 @@ use App\Http\Controllers\SiteController;
 */
 Route::get('/get-api', [SiteController::class, 'getApiController']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api',  'scope:view-user')->get('/user', function (Request $request) {
     return $request->user();
 });
